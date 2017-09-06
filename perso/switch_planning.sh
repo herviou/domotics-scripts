@@ -6,7 +6,7 @@
 # script:///home/pi/domoticz/scripts/switch_planning.sh disabletimer SWITCH_NAME 
 
 res="/tmp/domoticz-switch-planning-`date -Ins`"
-base_url="http://192.168.0.101/"
+base_url="http://192.168.1.101/"
 idx=`echo 'select ID from DeviceStatus where DeviceStatus.Name like ' '"'$2'"' ';' | sqlite3 -noheader /home/pi/domoticz/domoticz.db`
 
 curl -v "${base_url}json.htm?type=timers&idx=$idx" | grep "idx" | cut -f "2" -d ":" | sed -e "s| ||g" | sed -e "s|\"||g" > $res
